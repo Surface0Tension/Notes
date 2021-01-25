@@ -1,0 +1,629 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>第1讲 什么是逻辑学？</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="81e73cbf-1cf4-4b46-8552-58693e6c9b44" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">1️⃣</span></div><h1 class="page-title">第1讲 什么是逻辑学？</h1></header><div class="page-body"><h1 id="16c50fcb-4eac-4138-8d83-22c1783e91fb" class="">1.1 “逻辑“和”逻辑学“</h1><hr id="7229df96-3739-4506-8afe-5015b4e79c9c"/><h2 id="213f628f-7c00-44a6-a5dc-1b8c7657e326" class=""><strong>逻辑的词源：</strong></h2><ul id="b0879ca4-bafc-496c-b27b-2156c6c8b829" class="bulleted-list"><li>来源于古希腊语的逻各斯(Logos)：<ol id="3395df64-5463-4cfd-a243-74468ce9ffb7" class="numbered-list" start="1"><li>世界的可理解的规律;</li></ol><ol id="32dca91e-dbcc-4c00-b810-659bdf48f637" class="numbered-list" start="2"><li>一般的原理和规则;</li></ol></li></ul><h2 id="0521691e-b529-45a1-bf66-b68cb20bac7b" class=""><strong>“逻辑”一词的不同含义:</strong></h2><ul id="f74fef2f-6ee2-4642-9661-a2b4efd2289c" class="bulleted-list"><li>客观事物的规律性;</li></ul><ul id="6559860e-d55a-4e9d-a999-82097160128c" class="bulleted-list"><li>某种理论、观点、行为方式;（比如上面毛主席的话）</li></ul><ul id="8668ac1a-d4b7-4bde-8009-72500aa338b7" class="bulleted-list"><li>思维的规律、规则;（比如文章复合逻辑）</li></ul><ul id="9b467f98-1d64-4f66-bd09-88db4a41d7c1" class="bulleted-list"><li>一门学科，即逻辑学。</li></ul><h2 id="2309b7be-b02b-4a85-a5d0-4a62d5be85cd" class="">“逻辑学”：以<mark class="highlight-yellow_background">推理形式</mark>为主要研究对象的学科（要与日常中逻辑区分开来）</h2><h1 id="2b5b26b8-d52f-4af6-9fe8-923505566fd5" class="">1.2 推理和推理形式</h1><hr id="38ad0c52-4390-44c2-874c-2c0c016fc229"/><h2 id="c16ccfe5-4325-4b47-a6c1-1f8e885056d3" class=""><strong>推理：从</strong><mark class="highlight-yellow_background"><strong>已知条件</strong></mark><strong>(前提)得出</strong><mark class="highlight-yellow_background"><strong>结论</strong></mark><strong>的过程</strong></h2><p id="7488002d-4f69-44bc-bd62-1d7f4c9e35e9" class="">例如，侦破案件步骤:</p><ul id="8f4607c3-984b-4b90-9fd3-d3ee0c649a58" class="bulleted-list"><li>提取材料</li></ul><ul id="0b6fe818-14af-470e-9042-9940b523703c" class="bulleted-list"><li>搜集条件</li></ul><ul id="90d70d38-7bed-4f14-9071-51af8432904e" class="bulleted-list"><li>得出结论</li></ul><p id="a750a5ae-8538-4422-8c48-1c75cef46adb" class="">侦破案件是一个推理过程</p><p id="7f60867b-ab8e-4c59-9fab-49f30d29fd72" class="">又例如，法庭审案根据案卷（关于案件的材料、已知条件），作出判罚，这也是推理过程。</p><p id="2d77c459-9bf3-4e9d-b86e-7c00b18fd8c1" class="">又例如，数学上证明定理：用公理、定理推出新定理，这也是推理过程。</p><p id="3bb1162c-6ad7-4082-8fdb-5120745e3c83" class="">我们日常生活中，不经意都会推理（例如，父母回到家，摸电视背后，感觉有没有发烫，判断小孩在自己进门前是否在观看电视）</p><h2 id="60c69c44-1ac8-4b12-9676-6bf0b9ed1b3a" class=""><strong>推理形式：推理的结构</strong></h2><p id="7421fe5d-f573-4fc5-831a-0d2197ee7a60" class=""><strong>同类的不同具体推理具有共同的结构，即推理形式。</strong></p><ul id="ba84f2c6-4c39-46fd-aab2-f74471738fa1" class="bulleted-list"><li>因为所有金属都是导体，且铜是金属，所以铜是导体。</li></ul><ul id="25cd8295-af9b-42aa-9145-84478627058a" class="bulleted-list"><li>因为所有鸟都是卵生动物，且企鹅是鸟，所以企鹅是卵生动物。</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="625c1a79-7893-40d9-9303-2b1371ce575c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">因为所有A都是B，且C是A，所以C是B。（共同的结构）</div></figure><h1 id="7bc49578-b896-462e-bdeb-2657cf7182eb" class="">1.3 有效推理形式</h1><hr id="889a512c-84ee-41b9-96bb-a9efaf90a87b"/><h2 id="51ae076f-4adc-4073-a30a-50088e52bb74" class=""><mark class="highlight-yellow_background"><strong>真前提通过有效推理形式只能得到真结论；</strong></mark></h2><h2 id="1ace6a34-d520-4ee8-9d02-45fc80f8f7bf" class=""><mark class="highlight-yellow_background"><strong>即：通过有效推理形式，从真前提不会得到假结论。</strong></mark></h2><p id="0525f1fa-997b-49e3-8b55-96b9c41adf20" class="">例子：</p><ul id="f599b532-e9d7-43b8-a52d-d29fe7a65ecc" class="bulleted-list"><li>因为所有金属都是导体，且铜是金属，所以铜是导体。(正确)</li></ul><p id="4f162689-b368-4a38-96d8-30d7e70add13" class="">➡️因为所有A都是B，且C是A，所以C是B（有效推理形式）✅</p><ul id="116e58c0-ff55-4923-873d-21eae6f3fb17" class="bulleted-list"><li>因为所有金属都是导体，且铜是导体，所以铜是金属。（错误）</li></ul><ul id="8eb403e7-056d-405f-9fa4-ccdeb419a90e" class="bulleted-list"><li>反例：碳是导体，但不是金属。</li></ul><p id="2ce2344e-0705-4026-9533-ba39b575a8bd" class="">➡️因为所有A都是B，且C是B，所以C是A（无效推理形式）❎</p><h1 id="286384e6-68c1-4705-bb95-d2a2f7716dc2" class="">1.4 逻辑学的特点</h1><hr id="0256223d-9ee2-440e-9cd0-0e90f7b254e2"/><ul id="41ed40d1-3eaf-46da-aa16-9ebf5941d50a" class="bulleted-list"><li><mark class="highlight-yellow_background"><strong>抽象性</strong></mark><p id="57ed49ee-ce41-42d7-b957-6d72eb6eec9f" class="">所有的科学在某种意义上都是某一方面的抽象</p><p id="9072f095-1476-4b14-9348-37e31a51b741" class="">数理逻辑的公理系统中：符号只是符号本身，具有非常高的抽象性（也就是具有广泛应用性）</p></li></ul><ul id="c791912f-e9da-48b9-8ddd-2f9657f7d4f9" class="bulleted-list"><li><mark class="highlight-yellow_background"><strong>应用性</strong></mark><p id="790f9b2a-ea37-4b56-be1d-eb611b27d32e" class="">逻辑学所具有的超高的抽象性决定了其广泛的应用性。</p></li></ul><ul id="e60cd0a8-b9d6-427a-9b8e-4e614927c9b7" class="bulleted-list"><li><mark class="highlight-yellow_background"><strong>工具性</strong></mark><p id="4493dd5e-978d-4e4c-9fe3-f299c241cbf5" class="">逻辑学所具有的超高的抽象性以及其广泛的应用性使其对其它研究方向更为具体学课以及日常生活具有很强的工具性（或实用价值）。</p></li></ul><h1 id="184cc546-dbd8-4feb-92c5-80f367f75dae" class="">1.5 逻辑学的基本准则</h1><hr id="90dc96f9-5b86-4b40-b08c-2765eee1f8f8"/><ul id="d5db8a9e-c48f-4a6e-af7e-5d615058713d" class="bulleted-list"><li><mark class="highlight-yellow_background"><strong>同一律 </strong></mark><p id="50c56804-8df7-46a9-b37a-a828f78315b0" class="">A就是A。</p></li></ul><ul id="66bc1f20-b952-4312-ba8d-52d3e140165f" class="bulleted-list"><li><mark class="highlight-yellow_background"><strong>（不）矛盾论律</strong></mark><p id="83a0de96-f2aa-4732-ae82-8758a46c0e07" class="">A不是非A；</p><p id="e065b92d-efd0-42f6-9146-386cd78c8ff6" class="">即：A和A的否定不能同时成立。</p><ul id="f0614e32-cb42-40c2-8e66-e634b9b6175e" class="toggle"><li><details open=""><summary>但是日常生活中，常常描述某事物同时是好是坏</summary><p id="931879e6-2387-4303-91b3-351da7c65874" class="">如：”下雪既是好事又是坏事。“</p><p id="a3460031-f95c-4849-b91e-c7c0f19b379e" class="">正确的解读：</p><ul id="38b6a358-3e18-4cf1-bb36-271f1a7099c1" class="bulleted-list"><li>A：”下雪是好事“</li></ul><ul id="ead3a52c-b941-488a-8384-3dfd8e4be68a" class="bulleted-list"><li>A的否定：”下雪是坏事“（严格来说A的否定应该是”下雪不是好事“）</li></ul><ul id="3ef52f9a-0499-4262-8e9f-c49dbc0b3df9" class="bulleted-list"><li>A1：”下雪对冬小麦是好事“</li></ul><ul id="96173439-f21f-45ec-a2df-b6cbcf5c794d" class="bulleted-list"><li>A2的否定：”下雪对交通是坏事“</li></ul><p id="7d35376e-4681-4ce8-94ea-ce16237949e2" class=""><strong>A与A1，A2是不同的，所以不违反不矛盾律。</strong></p></details></li></ul></li></ul><ul id="71036345-df03-431d-a2b8-f60d5da2438c" class="bulleted-list"><li><mark class="highlight-yellow_background"><strong>排中律</strong></mark><p id="1e678892-8b41-4bd0-94da-1e859b58a2e3" class="">A或非A必有一真，不存在中间态。</p></li></ul><h1 id="0d620d59-dc19-4f1f-9542-16ba0643582c" class="">1.6 逻辑学和其他学科的关系</h1><hr id="f2c45b85-c1d5-444e-a90b-a5af0a0c6000"/><p id="8e9a57e1-0a87-4e81-972a-e249d2af3ed2" class="">逻辑学与以下学科的关系密切：</p><ul id="5e72d73f-bde4-4d44-be21-d42fda86d681" class="toggle"><li><details open=""><summary><strong>哲学</strong></summary><ul id="4deed4c2-42f9-41f3-bae8-17fb4193ce58" class="bulleted-list"><li>逻辑学最早是作为哲学的一部分存在的。</li></ul><ul id="1edb3fb9-5c8c-4b5c-99a1-26d97bab151c" class="bulleted-list"><li>哲学的狭义理解<ul id="68048136-826c-4c02-a10f-33a066c9fbbd" class="bulleted-list"><li>解决世界本原问题：世界是物质的，还是精神的，是主观的，还是客观的。</li></ul><ul id="e04eb286-4075-4409-b4a2-1ea27f8b450a" class="bulleted-list"><li>本体论和认识论是哲学的核心。</li></ul></li></ul><ul id="a3eddea8-3179-4aee-992c-e90667865348" class="bulleted-list"><li>哲学的广义理解<ul id="ad75de8a-491f-4d9c-a905-e0b24f1134b1" class="bulleted-list"><li>包括逻辑学，伦理学，美学</li></ul></li></ul></details></li></ul><ul id="90776a15-84ca-4960-9836-a7d6edef4172" class="toggle"><li><details open=""><summary><strong>数学</strong></summary><ul id="3d1dd320-0469-41cb-bfd1-d0761901dd07" class="bulleted-list"><li>数理逻辑：用数学的方法、数学的语言、数学的工具研究推理。数理逻辑的成果为数学基础的研究服务。</li></ul></details></li></ul><ul id="93a54f82-209e-4c42-bcc9-4ee9e6aa2963" class="toggle"><li><details open=""><summary><strong>语言学</strong></summary><ul id="944680c7-41d7-430f-9e03-7bfe60d29a16" class="bulleted-list"><li>语言是逻辑的外壳</li></ul><ul id="96fd3831-8ea9-4c54-8e84-9ccfde4c27e3" class="bulleted-list"><li>“整个大楼一片漆黑，只有那个窗户灯火通明。”是不对的，因为”<strong><mark class="highlight-yellow_background">一片漆黑</mark></strong>“和”<mark class="highlight-yellow_background">灯火</mark><strong><mark class="highlight-yellow_background">通明</mark></strong>“互为矛盾</li></ul><ul id="8426c881-f04b-40a5-88c4-a6bbbac62edb" class="bulleted-list"><li>同样，“中国有着世界上任何国家都没有的万里长城”也是不对的，应为”中国有着世界上<strong><mark class="highlight-yellow_background">其他</mark></strong>任何国家都没有的万里长城“</li></ul><p id="e45a162a-2b71-40cd-9641-1d06a3c44859" class="">
+</p></details></li></ul><ul id="d7d8be43-5660-4da9-9fc1-3b412dd00691" class="toggle"><li><details open=""><summary><strong>计算机科学</strong></summary><ul id="b05807c4-5bac-4c5e-891b-ba658172f3a2" class="bulleted-list"><li>计算机科学 离散数学</li></ul><ul id="c7860797-617c-4563-8aec-1c84dfde62b5" class="bulleted-list"><li>最早的逻辑系统：二值，是与不是</li></ul><ul id="ffb55913-ee87-4849-bf98-fdc551c5792c" class="bulleted-list"><li><strong><mark class="highlight-yellow_background">推理：演绎和归纳</mark></strong><ul id="de93e964-f836-4da5-8a59-00f758b29fff" class="bulleted-list"><li>演绎：从一般到个别</li></ul><ul id="40264ec0-ffb5-48e5-b17e-093c2a1aea63" class="bulleted-list"><li>归纳：从个别到一般</li></ul></li></ul><ul id="d3027909-7f81-49ce-9f21-df53de2327e6" class="bulleted-list"><li>计算机为未做到归纳，但能做到演绎</li></ul><ul id="d66d0327-b03e-4e5d-8029-0e1b8e842d76" class="bulleted-list"><li>归纳逻辑它的一个任务是要把我们所做的具体的归纳，要给出归纳的有效推理形式。</li></ul></details></li></ul><h1 id="fab51ac1-3633-478f-b718-11976076699e" class="">1.7 关于本课程《逻辑学概论》</h1><hr id="649c57e7-9015-43f4-974e-1183b8814ea1"/><h2 id="c92b63ce-366a-4d94-8a04-8f9eb0905e16" class="">传统逻辑还是现代逻辑？</h2><ul id="b2bd3743-cfa9-4081-a2c1-786267d33585" class="bulleted-list"><li>传统逻辑：古典逻辑 古希腊亚里士多德为代表。</li></ul><ul id="56866429-f4fc-4d20-a431-29b06f6f7979" class="bulleted-list"><li>现代逻辑：数理逻辑 西方以莱布尼茨为创始人。</li></ul><p id="c57c57b1-39d9-4432-a402-6c2a42321cbb" class="">课程内容：数理逻辑的基础部分和传统逻辑的常用部分。</p><p id="81c528d9-a124-4e5f-9cd6-11203a2e8a57" class="">数理逻辑部分不涉及任何一门高等数学的具体内容。</p><p id="c0cb9d8c-fa7d-40f4-b926-9adb340161f9" class="">通过具体的推理了解:逻辑的精神、逻辑的方法、逻辑的思路。</p><hr id="1c1624e3-b938-4ac0-872a-b1f0a63792ec"/><figure id="c67d8210-3f0c-4726-b547-fe3b75bed1b5" class="link-to-page"><a href="../%E9%80%BB%E8%BE%91%E5%AD%A6%E6%A6%82%E8%AE%BA%20c67d82103f0c4726b547fe3b75bed1b5.html"><span class="icon">🧠</span>逻辑学概论</a></figure><p id="11d5c0d2-bb3c-41c4-8dc2-e3b5302cc7c3" class="">
+</p></div></article></body></html>
